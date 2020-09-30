@@ -1,0 +1,45 @@
+{% extends 'navbar.html' %}
+
+{% block css_block %}
+{% endblock  %}
+
+{% block body_block %}
+
+<div class="container">
+<hr>
+  <h2 align="center" style="color:blue"> Leader Board</h2><hr>
+    {% if standings %}     
+      <table class="table table-bordered">
+        <thead class="table-dark">
+          <tr align="center">
+            <th>Position</th>
+            <th>Avatar</th>
+            <th>Username</th>
+            <th>Uva Submission</th>
+            <th>Codeforces Submission</th>
+            <th>Total Submission</th>
+          </tr>
+        </thead>
+        <tbody class="table-success" style="font-size:20px">
+          {% for s in standings %}
+                <tr align="center">
+                <td>{{forloop.counter}}</td>
+                {% for p in profiles %}
+                  {% if s.user.username == p.user.username %}
+                    <td><img class="rounded-circle" src={{p.profile_pic.url}} width="60px" height="60px"></td>
+                  {% endif %}
+                {% endfor %}
+                <td>{{s.user.username}}</td>
+                <td>{{s.uva_submission}}</td>
+                <td>{{s.codeforces_submission}}</td>
+                <td>{{s.uva_submission|add:s.codeforces_submission}}</td>
+                </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+  {% endif %}
+</div>
+
+</body>
+
+{% endblock  %}
