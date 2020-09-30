@@ -121,7 +121,12 @@ STATICFILES_DIR = [STAT_DIR,]
 MEDIA_ROOT = MEDIA_DIR 
 MEDIA_URL ='/media/'
 
-CRONTAB_COMMAND_SUFFIX = '2>&1'
+# CRONTAB_COMMAND_SUFFIX = '2>&1'
+CRONTAB_EXECUTABLE = 'G:\Trojan\workspace\psr\Lib\site-packages\django_crontab\crontab.py'
+CRONTAB_DJANGO_PROJECT_NAME=''
+CRONTAB_DJANGO_MANAGE_PATH='G:\Trojan\workspace\psr\src\manage.py'
+CRONTAB_PYTHON_EXECUTABLE='G:\Trojan\workspace\psr\Scripts\pythonw.exe'
+
 CRONJOBS = [
-    ('*/1 * * * *', 'App_Post.cron.my_job', '>> ~/Desktop/cron_job.log')
+    ('*/1 * * * *','App_Post.cron.my_job','>> ~/Desktop/cron_job.log')
 ]
